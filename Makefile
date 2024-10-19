@@ -1,4 +1,4 @@
 install:
-	stow -S .
+	stow -S . -t $(HOME)
 uninstall:
-	stow -D .
+	stow -D . -t $(HOME)
