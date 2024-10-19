@@ -1,0 +1,4 @@
+set completion-ignore-case on
+set completion-display-width 100
+set print-completions-horizontally on
+TAB: menu-complete
