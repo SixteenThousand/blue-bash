@@ -18,8 +18,12 @@ function jsonp {
 
 function stale {
 	STALE_CMD=$(cat $HOME/.bash_history* | fzf)
+	if [ -z "$STALE_CMD" ]
+	then
+		return
+	fi
 	read -p "About to run >>$STALE_CMD<<. Proceed (y/N)? " PPROCEED
-	if [ $PPROCEED = 'y' ]
+	if [ "$PPROCEED" = 'y' ]
 	then
 		eval $STALE_CMD
 	else
