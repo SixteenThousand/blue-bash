@@ -1,7 +1,10 @@
 # stuff added by applications
 
 # rust/rustup
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]
+then
+	source $HOME/.cargo/env
+fi
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
