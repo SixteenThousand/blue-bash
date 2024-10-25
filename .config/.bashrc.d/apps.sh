@@ -1,12 +1,15 @@
 # stuff added by applications
 
 # zoxide
-if stat /etc/debian_version > /dev/null
+if which zoxide > /dev/null
 then
-	source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-debian.sh
-elif :
-then
-	source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-fedora.sh
+    if stat /etc/debian_version > /dev/null
+    then
+        source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-debian.sh
+    elif :
+    then
+        source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-fedora.sh
+    fi
 fi
 
 # rust/rustup
