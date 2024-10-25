@@ -14,5 +14,6 @@ alias ysh='yona -s'
 alias zathura='zathura --fork'
 if ! which rg > /dev/null
 then
-	alias rg='grep -RnH'
+	alias rg='grep -RnH --exclude-dir=.git --exclude-dir=node_modules \
+		-I --color=always'
 fi
