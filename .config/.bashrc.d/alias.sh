@@ -17,3 +17,4 @@ then
 	alias rg='grep -RnH --exclude-dir=.git --exclude-dir=node_modules \
 		-I --color=always'
 fi
+alias xcopy='xclip -selection clipboard'
