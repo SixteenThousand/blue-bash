@@ -1,5 +1,14 @@
 # stuff added by applications
 
+# zoxide
+if stat /etc/debian_version > /dev/null
+then
+	source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-debian.sh
+elif :
+then
+	source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-fedora.sh
+fi
+
 # rust/rustup
 if [ -f "$HOME/.cargo/env" ]
 then
