@@ -5,8 +5,11 @@ function mvt {
 }
 
 function book {
+	OLD_DIR=$(pwd)
 	cd ~/Documents/Books-and-Things
 	xdg-open $(fzf)
+	cd $OLD_DIR
+	unset OLD_DIR
 }
 
 function jsonp {
