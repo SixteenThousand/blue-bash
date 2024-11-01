@@ -12,4 +12,3 @@ alias shell="rlwrap xargs -L 1"
 alias yg='yona -s grep -Rn'
 alias ysh='yona -s'
 alias zathura='zathura --fork'
-alias fd='find . -name '

@@ -43,3 +43,9 @@ function gclone {
 function woman {
 	nvim -c ":Man $@ | wincmd j | quit"
 }
+
+function fd {
+	name=$1
+	shift 1
+	find . $@ -name $1 2>/dev/null
+}
