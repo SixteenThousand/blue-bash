@@ -4,3 +4,7 @@ set completion-ignore-case on
 set completion-display-width 100
 set print-completions-horizontally on
 TAB: menu-complete
+
+set echo-control-characters off
+
+"\C-g": "mvt\r"
