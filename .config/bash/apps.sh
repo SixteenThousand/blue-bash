@@ -5,10 +5,10 @@ if which zoxide 2>&1 1>/dev/null
 then
     if [ -f /etc/debian_version ]
     then
-        source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-debian.sh
+        source ~/.config/bash/lazy/zoxide-debian.sh
     elif :
     then
-        source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-fedora.sh
+        source ~/.config/bash/lazy/zoxide-fedora.sh
     fi
 fi
 

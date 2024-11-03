@@ -1,7 +1,7 @@
 # scripts that either can't be separate files or are just too small to be
 
 function mvt {
-	source $XDG_CONFIG_HOME/.bashrc.d/lazy/mvt.sh $@
+	source ~/.config/bash/lazy/mvt.sh $@
 }
 
 function book {

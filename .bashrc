@@ -21,8 +21,8 @@ then
 	if [[ "$-" == *i* ]]
 	then
 		# User specific aliases and functions
-		if [ -d ~/.config/.bashrc.d ]; then
-			for rc in ~/.config/.bashrc.d/*; do
+		if [ -d ~/.config/bash ]; then
+			for rc in ~/.config/bash/*; do
 				if [ -f "$rc" ]; then
 					. "$rc"
 				fi
