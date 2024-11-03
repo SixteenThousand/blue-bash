@@ -6,10 +6,10 @@ fi
 # xdg & other standards
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
-if which nvim > /dev/null
+if which nvim 2>&1 1>/dev/null
 then
 	export EDITOR=nvim
-elif which vim > /dev/null
+elif which vim 2>&1 1>/dev/null
 then
 	export EDITOR=vim
 fi
