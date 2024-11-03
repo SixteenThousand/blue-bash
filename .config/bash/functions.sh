@@ -52,7 +52,7 @@ function woman {
 	nvim -c ":Man $@ | wincmd j | quit"
 }
 
-function fd {
+function findq {
 	name=$1
 	shift 1
 	find . $@ -name $1 2>/dev/null
