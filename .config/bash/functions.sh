@@ -48,13 +48,6 @@ function stale {
 	unset stale_cmd proceed
 }
 
-function gclone {
-	repo=$1
-	shift 1
-	git clone https://github.com/SixteenThousand/$REPO.git $@
-	unset repo
-}
-
 function woman {
 	nvim -c ":Man $@ | wincmd j | quit"
 }

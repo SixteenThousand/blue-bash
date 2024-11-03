@@ -12,16 +12,22 @@ then
 	SIXTEENBASHRCSOURCED=Y
 
 	# User specific environment
+	# path
 	if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 		PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 	fi
 	export PATH
+	# history
 	export HISTCONTROL="$HISTCONTROL:erasedups"
 	export HISTFILESIZE=1000
 	export HISTIGNORE="$HISTIGNORE:z *:&:stale:nv *"
-	# Only change this VERY CAREFULLY. It is used in the stale function
-	# in functions.sh
 	export HISTTIMEFORMAT='%b-%d %H:%M:%S | '
+		# Only change this VERY CAREFULLY. It is used in the stale function
+		# in functions.sh
+	# github
+	export MYGITHUB='https://github.com/SixteenThousand'
+	export GITHUB='https://github.com'
+	
 
 	# see if we're interactive or not
 	if [[ "$-" == *i* ]]
