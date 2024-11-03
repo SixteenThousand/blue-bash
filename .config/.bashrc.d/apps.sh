@@ -1,9 +1,9 @@
 # stuff added by applications
 
 # zoxide
-if which zoxide > /dev/null
+if which zoxide 2>&1 1>/dev/null
 then
-    if stat /etc/debian_version > /dev/null
+    if [ -f /etc/debian_version ]
     then
         source $XDG_CONFIG_HOME/.bashrc.d/lazy/zoxide-debian.sh
     elif :
