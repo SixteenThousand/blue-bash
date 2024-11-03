@@ -1,7 +1,3 @@
-if ! which zoxide > /dev/null
-then
-	return
-fi
 # =============================================================================
 #
 # Utility functions for zoxide.
