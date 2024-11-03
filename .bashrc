@@ -28,9 +28,6 @@ if [ -d ~/.config/.bashrc.d ]; then
 fi
 unset rc
 
-# add my own stuff to $PATH
-PATH="$PATH:$HOME/path-extras"
-
 # see if we're interactive or not
 if [ -n "$PS1" ]
 then
