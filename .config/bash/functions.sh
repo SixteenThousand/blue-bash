@@ -26,24 +26,33 @@ function jsonp {
 }
 
 function stale {
-	STALE_CMD=$(cat $HOME/.bash_history* | fzf)
-	if [ -z "$STALE_CMD" ]
+	# add stuff from current session
+	history -a
+	# choose something
+	stale_cmd=$(history | fzf)
+	# check we actually chose something
+	if [[ -z "$stale_cmd" ]]
 	then
+		echo 'Ok, back to the present I guess...'
 		return
 	fi
-	read -p "About to run >>$STALE_CMD<<. Proceed (y/N)? " PPROCEED
-	if [ "$PPROCEED" = 'y' ]
+	# history should come with dates; see ~/.bashrc
+	stale_cmd=$(echo $stale_cmd | cut -d '|' -f 2)
+	read -p "About to run >>[1m$stale_cmd[0m<<. Proceed (y/N)? " proceed
+	if [[ "$proceed" = 'y' ]]
 	then
-		eval $STALE_CMD
+		eval $stale_cmd
 	else
 		echo "...well, I guess we're not doing that then"
 	fi
+	unset stale_cmd proceed
 }
 
 function gclone {
-	REPO=$1
+	repo=$1
 	shift 1
 	git clone https://github.com/SixteenThousand/$REPO.git $@
+	unset repo
 }
 
 function woman {
@@ -54,4 +63,5 @@ function fd {
 	name=$1
 	shift 1
 	find . $@ -name $1 2>/dev/null
+	unset name
 }

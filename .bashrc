@@ -16,6 +16,12 @@ then
 		PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 	fi
 	export PATH
+	export HISTCONTROL="$HISTCONTROL:erasedups"
+	export HISTFILESIZE=1000
+	export HISTIGNORE="$HISTIGNORE:z *:&:stale:nv *"
+	# Only change this VERY CAREFULLY. It is used in the stale function
+	# in functions.sh
+	export HISTTIMEFORMAT='%b-%d %H:%M:%S | '
 
 	# see if we're interactive or not
 	if [[ "$-" == *i* ]]
