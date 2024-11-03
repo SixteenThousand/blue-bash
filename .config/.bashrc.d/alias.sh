@@ -12,3 +12,9 @@ alias shell="rlwrap xargs -L 1"
 alias yg='yona -s grep -Rn'
 alias ysh='yona -s'
 alias zathura='zathura --fork'
+if ! which rg 2>&1 1>/dev/null
+then
+	alias rg='grep -RnH --exclude-dir=.git --exclude-dir=node_modules \
+		-I --color=always'
+fi
+alias xcopy='xclip -selection clipboard'
