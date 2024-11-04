@@ -1,14 +1,19 @@
-function prompt_vcs_info {
-    if VCS_INFO_GIT=$(git branch --show-current 2>/dev/null)
+function prompt_info {
+	last_status="$?"
+	if [[ $last_status -ne 0 ]]
+	then
+		echo -e "\e[31m=>> $last_status <<=\e[0m"
+	fi
+    if PROMPT_VCS_INFO=$(git branch --show-current 2>/dev/null)
     then
-        VCS_INFO=" $VCS_INFO_GIT"
+        PROMPT_VCS_INFO=" $PROMPT_VCS_INFO"
     else
-        VCS_INFO=""
+        PROMPT_VCS_INFO=""
     fi
-	history -a
+	unset last_status
 }
 
-PROMPT_COMMAND='prompt_vcs_info'
+PROMPT_COMMAND='prompt_info'
 
 PS1='\[\e]133;A\e\\\]\[\e]133;P\007\]\
 \[\e[33m\]\u\
@@ -21,7 +26,7 @@ PS1='\[\e]133;A\e\\\]\[\e]133;P\007\]\
 \[\e[0m\]] <\
 \[\e[34m\]\j\
 \[\e[0m\]> \
-\[\e[3;32m\]$VCS_INFO\
+\[\e[3;32m\]$PROMPT_VCS_INFO\
 \[\e[0m\]
 \[\e[1;31m\] => \
 \[\e[0m\e]133;B\007\]\
