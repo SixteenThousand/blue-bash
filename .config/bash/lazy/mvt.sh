@@ -44,10 +44,13 @@ then
 					 to pwd.
 	EOF
 else
-	NEW_DIR=$(find ${FLAGS['search-directory']} -maxdepth ${FLAGS[depth]} -type d \
-		2>/dev/null | fzf)
+	NEW_DIR="$(find ${FLAGS['search-directory']} -maxdepth ${FLAGS[depth]} -type d \
+		2>/dev/null | fzf)"
 	# check fzf wasn't cancelled before changing directory
-	cd ${NEW_DIR:-$PWD}
+	if [[ -n "$NEW_DIR" ]]
+	then
+		cd "$NEW_DIR"
+	fi
 fi
 
 
