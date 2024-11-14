@@ -13,7 +13,7 @@ function prompt_info {
 	unset last_status
 }
 
-PROMPT_COMMAND='prompt_info'
+PROMPT_COMMAND="prompt_info;${PROMPT_COMMAND#;}"
 
 PS1='\[\e]133;A\e\\\]\[\e]133;P\007\]\
 \[\e[33m\]\u\
