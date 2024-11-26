@@ -18,7 +18,6 @@ z() {
         fi
     else
         _zoxide_result="$(zoxide query -- "$@")"
-        zoxide add  "$_zoxide_result"
         _z_cd "$_zoxide_result"
     fi
 }
