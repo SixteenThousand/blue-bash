@@ -13,3 +13,4 @@ alias zathura='zathura --fork'
 alias yg='grep -RnH --exclude-dir=.git --exclude-dir=node_modules \
 	-I --color=always'
 alias xcopy='xclip -selection clipboard'
+alias te='tree -a -I .git -I node_modules'
