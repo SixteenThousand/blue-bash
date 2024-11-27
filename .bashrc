@@ -46,4 +46,10 @@ then
 		# shopt -s failglob # globs that don't match anything throw an error
 	fi
 	unset command_not_found_handle
+
+	# Without this, CTRL-S would stop you being able to type!
+	# If using another shell without this in its config, use CTRL-C or CTRL-Q to
+	# let the shell start accepting input again.
+	# This is called "Software Flow Control".
+	stty -ixon
 fi
