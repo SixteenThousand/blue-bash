@@ -1,3 +1,5 @@
+PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
 if which nvim 2>&1 1>/dev/null
 then
 	export EDITOR=nvim
