@@ -1,14 +1,9 @@
-PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-
-if which nvim 2>&1 1>/dev/null
+EDITOR=nvim
+if ! which nvim 2>&1 >/dev/null
 then
-	export EDITOR=nvim
-elif which vim 2>&1 1>/dev/null
-then
-	export EDITOR=vim
+	EDITOR=vim
 fi
-export VISUAL=$EDITOR
-export PAGER=less
+export EDITOR
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
@@ -23,6 +18,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # android studio
 export ANDROID_HOME="$HOME/Android/Sdk"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
+PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 
+PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+export PATH
