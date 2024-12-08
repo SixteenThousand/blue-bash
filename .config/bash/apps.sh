@@ -18,17 +18,21 @@ then
 	source $HOME/.cargo/env
 fi
 
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-	# This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-	# This loads nvm bash_completion
+function nvm_init {
+	# node version manager
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+		# This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+		# This loads nvm bash_completion
+}
 
-# sdkman
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!! - supposedly
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+function sdkman_init {
+	# sdkman
+	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!! - supposedly
+	export SDKMAN_DIR="$HOME/.sdkman"
+	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+}
 
 # C#, F#, VB, .NET, dotnet
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
