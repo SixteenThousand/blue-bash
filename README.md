@@ -6,7 +6,9 @@ possibly one of the most annoying pieces of software to configure.
 
 ## TODO
 
-Nothing to do!
+- Add support for cd-on-quit in clifm; requires
+    - reading the clifm license (GPL v2)
+    - adding a license to this repo (likely AGPL)
 
 ## Issues
 
