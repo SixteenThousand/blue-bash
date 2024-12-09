@@ -6,9 +6,7 @@ possibly one of the most annoying pieces of software to configure.
 
 ## TODO
 
-- SPEED UP STARTUP
-- allow stale comamnds to have pipes in them
-
+Nothing to do!
 
 ## Issues
 

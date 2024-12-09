@@ -37,7 +37,7 @@ function stale {
 		return
 	fi
 	# history should come with dates; see ~/.bashrc
-	stale_cmd=$(echo $stale_cmd | cut -d '|' -f 2)
+	stale_cmd=${stale_cmd#*|}
 	read -p "About to run >>[1m$stale_cmd[0m<<. Proceed (y/N)? " proceed
 	if [[ "$proceed" = 'y' ]]
 	then
