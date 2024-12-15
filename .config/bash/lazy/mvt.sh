@@ -1,58 +1,53 @@
 declare -A FLAGS
-FLAGS[depth]='7'
-FLAGS['search-directory']='/'
+FLAGS[depth]=7
+FLAGS[search_directory]=/
 
-function argparse() {
-	function setflag() {
-		if [ -n "$UNSET_FLAG" ]
-		then
-			FLAGS[$UNSET_FLAG]=$1
-		fi
-	}
-	for arg in $@
-	do
-		case $arg in
-			-c|--cwd) FLAGS[cwd]='TRUE';;
-			-d|--depth) UNSET_FLAG='depth';;
-			-h|--help) FLAGS['help']='TRUE';;
-			-s|--search-directory) UNSET_FLAG='search-directory';;
-			*) setflag $arg;;
-		esac
-	done
-}
+while [ "$#" -gt 0 ]
+do
+	case $1 in
+		-c|--cwd)
+			FLAGS[search_directory]=$(pwd);;
+		-d|--depth)
+			FLAGS[depth]=$2
+			shift;;
+		-h|--help)
+			cat <<- EOF
+			Move To! v1.4 (bash)
+			Options:
+			    -h,--help
+			        Show this help message
+			    -d,--depth DEPTH
+			        Specify how deep within the directory tree you want to search.
+			    -s,--search_directory DIRECTORY
+			        Specify the directory to search within. Can be relative.
+			    -c,--cwd
+			        Search within the current working directory. Equivalent to
+			          -s \$(PWD)
+			    -p,--print
+			        Instead of changing the working directory, just print the chosen
+			        directory
+			EOF
+			return;;
+		-s|--search-directory)
+			FLAGS[search_directory]=$2
+			shift;;
+		-p|--print) FLAGS[print]=TRUE;;
+		*)
+			echo "mvt: Error: invalid option $1" >&2
+			return;;
+	esac
+	shift
+done
 
-
-# MAIN
-argparse $@
-
-if [ -n "${FLAGS[cwd]}" ]
+NEW_DIR="$(find ${FLAGS[search_directory]} -maxdepth ${FLAGS[depth]} -type d \
+	2>/dev/null | fzf)"
+# check fzf wasn't cancelled before changing directory
+if [ -n "$NEW_DIR" -a -z "${FLAGS['print']}" ]
 then
-	FLAGS['search-directory']=$(pwd)
-fi
-
-if [ "${FLAGS['help']}" = 'TRUE' ]
-then
-	cat <<- EOF
-	Move To! v1.3 (bash)
-	Options:
-	   -h,--help   - show this help message
-	   -d,--depth  - Specify how deep within the directory tree you want to 
-					 search.
-	   -c,--cwd    - Search within the current working directory only
-	   -s,--search-directory
-				   - Specify the directory to search within. Can be relative 
-					 to pwd.
-	EOF
+	cd "$NEW_DIR"
 else
-	NEW_DIR="$(find ${FLAGS['search-directory']} -maxdepth ${FLAGS[depth]} -type d \
-		2>/dev/null | fzf)"
-	# check fzf wasn't cancelled before changing directory
-	if [[ -n "$NEW_DIR" ]]
-	then
-		cd "$NEW_DIR"
-	fi
+	echo $NEW_DIR
 fi
 
 
-unset UNSET_FLAG FLAGS NEW_DIR
-unset -f argparse showhelp setflag
+unset FLAGS NEW_DIR
