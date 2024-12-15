@@ -18,7 +18,18 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # android studio
 export ANDROID_HOME="$HOME/Android/Sdk"
-PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 
-PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-export PATH
+# fnm
+export PATH="/run/user/1000/fnm_multishells/41738_1733769755361/bin":"$PATH"
+export FNM_MULTISHELL_PATH="/run/user/1000/fnm_multishells/41738_1733769755361"
+export FNM_VERSION_FILE_STRATEGY="local"
+export FNM_DIR="/home/thom/.local/share/fnm"
+export FNM_LOGLEVEL="info"
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
+export FNM_COREPACK_ENABLED="false"
+export FNM_RESOLVE_ENGINES="true"
+export FNM_ARCH="x64"
+
+
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
