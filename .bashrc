@@ -8,7 +8,7 @@ fi
 
 # history
 export HISTCONTROL="$HISTCONTROL:erasedups"
-export HISTFILESIZE=1000
+export HISTFILESIZE=80000
 export HISTIGNORE="$HISTIGNORE:z *:&:stale:nv *"
 export HISTTIMEFORMAT='%b-%d %H:%M:%S | '
 # Only change this VERY CAREFULLY. It is used in the stale function
@@ -37,3 +37,5 @@ unset command_not_found_handle
 # let the shell start accepting input again.
 # This is called "Software Flow Control".
 stty -ixon
+
+fastfetch 2>/dev/null || :
