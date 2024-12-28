@@ -1,5 +1,5 @@
 declare -A FLAGS
-FLAGS[depth]=7
+FLAGS[depth]=8
 FLAGS[search_directory]=/
 
 while [ "$#" -gt 0 ]
