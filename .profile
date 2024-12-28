@@ -31,5 +31,8 @@ export FNM_COREPACK_ENABLED="false"
 export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="x64"
 
+# nnn, the file manager
+export NNN_TRASH=1 # -> use trash-cli. Set to 2 for `gio trash`
+
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
