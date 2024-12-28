@@ -5,6 +5,8 @@ then
 fi
 export EDITOR
 
+export TERMINAL=kitty
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 
