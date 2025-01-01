@@ -2,6 +2,7 @@ EDITOR=nvim
 if ! which nvim 2>&1 >/dev/null
 then
 	EDITOR=vim
+	MANPAGER='nvim +Man!'
 fi
 export EDITOR
 
