@@ -1,8 +1,8 @@
-EDITOR=nvim
-if ! which nvim 2>&1 >/dev/null
+EDITOR=vim
+if which nvim 2>&1 >/dev/null
 then
-	EDITOR=vim
-	MANPAGER='nvim +Man!'
+	EDITOR=nvim
+	export MANPAGER='nvim +Man!'
 fi
 export EDITOR
 
