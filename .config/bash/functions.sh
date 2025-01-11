@@ -18,13 +18,6 @@ function book {
 	unset old_dir book
 }
 
-function jsonp {
-	TEMP=$(mktemp jsonp.XXX)
-	cat $1 | jq . > $TEMP
-	trash $1
-	mv $1.tmp $1
-}
-
 function stale {
 	# add stuff from current session
 	history -a
@@ -48,11 +41,7 @@ function stale {
 	unset stale_cmd proceed
 }
 
-function woman {
-	nvim -c ":Man $@ | wincmd j | quit"
-}
-
-function findq {
+function fq {
 	name=$1
 	shift 1
 	find . $@ -name $1 2>/dev/null
