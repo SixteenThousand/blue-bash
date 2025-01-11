@@ -1,16 +1,7 @@
 # stuff added by/for applications
 
 # zoxide
-if which zoxide 2>&1 1>/dev/null
-then
-    if [ -f /etc/debian_version ]
-    then
-        source ~/.config/bash/lazy/zoxide-debian.sh
-    elif :
-    then
-        source ~/.config/bash/lazy/zoxide-fedora.sh
-    fi
-fi
+eval "$(zoxide init bash)"
 
 # rust/rustup
 if [ -f "$HOME/.cargo/env" ]
@@ -42,8 +33,10 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# man pages; MANPAGER set in .profile
 # get italics in man pages
 export MANROFFOPT=-P-i
+export MANWIDTH=999
 
 # nnn, the file manager
 export NNN_TRASH=1 # -> use trash-cli. Set to 2 for `gio trash`
