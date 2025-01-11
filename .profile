@@ -3,6 +3,7 @@ if which nvim 2>&1 >/dev/null
 then
 	EDITOR=nvim
 	export MANPAGER='nvim +Man!'
+	export MANWIDTH=999
 fi
 export EDITOR
 

@@ -36,7 +36,6 @@ esac
 # man pages; MANPAGER set in .profile
 # get italics in man pages
 export MANROFFOPT=-P-i
-export MANWIDTH=999
 
 # nnn, the file manager
 export NNN_TRASH=1 # -> use trash-cli. Set to 2 for `gio trash`
