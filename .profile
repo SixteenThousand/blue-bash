@@ -20,7 +20,7 @@ fi
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # android studio
-export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_HOME="$HOME/Messy-Installs/Android-Studio-Flatpak/Sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 
 # fnm
