@@ -44,6 +44,6 @@ function stale {
 function fq {
 	name=$1
 	shift 1
-	find . $@ -name $1 2>/dev/null
+	find . $@ -name "$name" 2>/dev/null
 	unset name
 }
