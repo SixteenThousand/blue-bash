@@ -38,9 +38,6 @@ esac
 export MANROFFOPT=-P-i
 
 # nnn, the file manager
-export NNN_TRASH=1 # -> use trash-cli. Set to 2 for `gio trash`
-export NNN_OPTS=HQ
-export NNN_TMPFILE='/tmp/nnn-lastdir'
 function nnn {
 	command nnn
 	source $NNN_TMPFILE
