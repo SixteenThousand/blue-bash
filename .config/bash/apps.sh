@@ -42,5 +42,3 @@ function nnn {
 	command nnn
 	source $NNN_TMPFILE
 }
-
-
