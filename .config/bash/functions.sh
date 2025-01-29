@@ -10,7 +10,7 @@ function book {
 	book=$(fzf)
 	if [[ -n "$book" ]]
 	then
-		xdg-open "$book"
+		xdg-open "$book" & disown
 	else
 		echo "You don't like reading, do you?"
 	fi
