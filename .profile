@@ -3,11 +3,10 @@ if which nvim 2>&1 >/dev/null
 then
 	EDITOR=nvim
 	export MANPAGER='nvim +Man!'
-	export MANWIDTH=999
 fi
 export EDITOR
 
-export TERMINAL=kitty
+export TERMINAL='kitty -1'
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
