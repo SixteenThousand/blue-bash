@@ -39,7 +39,7 @@ export NNN_TRASH=1 # -> use trash-cli. Set to 2 for `gio trash`
 export NNN_OPTS=HQe
 export NNN_TMPFILE='/tmp/nnn-lastdir'
 export NNN_OPENER=xdg-open
-export NNN_PLUGS='z:zoxide-cd'
+export NNN_PLUG='z:zoxide-cd;a:mount-a;b:mount-b;s:mount-nas'
 
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
