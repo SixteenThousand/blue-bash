@@ -40,5 +40,9 @@ export MANROFFOPT=-P-i
 # nnn, the file manager
 function nnn {
 	command nnn
-	source $NNN_TMPFILE
+	read -p 'cd? (Y/n)?: ' choice
+	if [ "$choice" != n ]
+	then
+		source $NNN_TMPFILE
+	fi
 }
