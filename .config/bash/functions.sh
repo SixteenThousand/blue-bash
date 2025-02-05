@@ -47,3 +47,8 @@ function fq {
 	find . $@ -name "$name" 2>/dev/null
 	unset name
 }
+
+function checkpath {
+	find $(echo $PATH | sed -e 's/:/ /g') -maxdepth 1 -type f 2>/dev/null |
+		grep $@
+}
