@@ -8,7 +8,7 @@ fi
 
 # history
 export HISTCONTROL="$HISTCONTROL:erasedups"
-export HISTFILESIZE=80000
+export HISTFILESIZE=1000000
 export HISTIGNORE="$HISTIGNORE:z *:&:stale"
 export HISTTIMEFORMAT='%b-%d %H:%M:%S | '
 # Only change this VERY CAREFULLY. It is used in the stale function

@@ -1,7 +1,7 @@
 alias ls="ls --color=always --group-directories-first --almost-all"
 alias lsn="ls --color=never"
 alias gitroot='cd $(git rev-parse --show-toplevel)'
-alias vv=$EDITOR
+alias vv="$EDITOR"
 alias ff="clifm"
 alias py="python"
 alias code="codium"
