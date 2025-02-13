@@ -25,7 +25,8 @@ function stale {
 			return
 			;;
 		-b|--bookmarks)
-			local stale_cmd=$(cat "$SIXTEEN_DATA_DIR/stale-bookmarks" | fzf)
+			local stale_cmd=$(cat "$SIXTEEN_DATA_DIR/stale-bookmarks" | \
+				fzf --prompt='stale bookmark> ')
 			;;
 		?*)
 			# add command -DIGIT to bookmarks
@@ -42,7 +43,7 @@ function stale {
 		*)
 			# add stuff from current session
 			history -a
-			local stale_cmd=$(history | fzf)
+			local stale_cmd=$(history | fzf --prompt='stale> ')
 			;;
 	esac
 	# check we actually chose something
@@ -57,7 +58,8 @@ function stale {
 	read -p "About to run >>[1m$stale_cmd[0m<<. Proceed (y/N)? " proceed
 	if [ "$proceed" = y ] || [ "$proceed" = Y ]
 	then
-		eval $stale_cmd
+		eval "$stale_cmd"
+		history -s "$stale_cmd"
 	else
 		echo "...well, I guess we're not doing that then"
 	fi
