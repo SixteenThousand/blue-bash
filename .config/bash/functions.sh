@@ -19,10 +19,22 @@ function book {
 }
 
 function stale {
-	# add stuff from current session
-	history -a
 	# choose something
-	stale_cmd=$(history | fzf)
+	case $1 in
+		-b|--bookmarks)
+			stale_cmd=$(cat "$SIXTEEN_DATA_DIR/stale-bookmarks" | fzf)
+			;;
+		?*)
+			# add command -DIGIT to bookmarks
+			fc -ln "-$1" "-$1" >> "$SIXTEEN_DATA_DIR/stale-bookmarks"
+			return
+			;;
+		*)
+			# add stuff from current session
+			history -a
+			stale_cmd=$(history | fzf)
+			;;
+	esac
 	# check we actually chose something
 	if [[ -z "$stale_cmd" ]]
 	then

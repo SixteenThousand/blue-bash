@@ -6,13 +6,20 @@ if [ -f /etc/bashrc ]; then
 fi
 # -------------------------
 
+# Sections marked with !DANGER! should be edited with care.
+# They are used in later sections of the config and changing this
+# without taking them into account may break extensions.
+
+# !DANGER!
+SIXTEEN_DATA_DIR="$HOME/.local/share/bash"
+
 # history
+# !DANGER! (stale)
+export HISTFILE="$SIXTEEN_DATA_DIR/.bash_history"
 export HISTCONTROL="$HISTCONTROL:erasedups"
 export HISTFILESIZE=1000000
 export HISTIGNORE="$HISTIGNORE:z *:&:stale"
 export HISTTIMEFORMAT='%b-%d %H:%M:%S | '
-# Only change this VERY CAREFULLY. It is used in the stale function
-# in functions.sh
 
 # github
 export MYGITHUB='https://github.com/SixteenThousand'
