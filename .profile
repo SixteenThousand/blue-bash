@@ -42,4 +42,4 @@ export NNN_OPENER=xdg-open
 export NNN_PLUG='z:zoxide-cd;a:mount-a;b:mount-b;s:mount-nas'
 
 
-export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH:"
