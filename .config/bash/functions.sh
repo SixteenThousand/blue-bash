@@ -5,9 +5,9 @@ function mvt {
 }
 
 function book {
-	old_dir=$(pwd)
+	local old_dir=$(pwd)
 	cd ~/Documents/Books-and-Things
-	book=$(fzf)
+	local book=$(fzf)
 	if [[ -n "$book" ]]
 	then
 		xdg-open "$book" & disown
@@ -15,14 +15,13 @@ function book {
 		echo "You don't like reading, do you?"
 	fi
 	cd $old_dir
-	unset old_dir book
 }
 
 function stale {
 	# choose something
 	case $1 in
 		-b|--bookmarks)
-			stale_cmd=$(cat "$SIXTEEN_DATA_DIR/stale-bookmarks" | fzf)
+			local stale_cmd=$(cat "$SIXTEEN_DATA_DIR/stale-bookmarks" | fzf)
 			;;
 		?*)
 			# add command -DIGIT to bookmarks
@@ -32,7 +31,7 @@ function stale {
 		*)
 			# add stuff from current session
 			history -a
-			stale_cmd=$(history | fzf)
+			local stale_cmd=$(history | fzf)
 			;;
 	esac
 	# check we actually chose something
@@ -43,6 +42,7 @@ function stale {
 	fi
 	# history should come with dates; see ~/.bashrc
 	stale_cmd=${stale_cmd#*|}
+	local proceed
 	read -p "About to run >>[1m$stale_cmd[0m<<. Proceed (y/N)? " proceed
 	if [[ "$proceed" = 'y' ]]
 	then
@@ -50,14 +50,12 @@ function stale {
 	else
 		echo "...well, I guess we're not doing that then"
 	fi
-	unset stale_cmd proceed
 }
 
 function fq {
-	name=$1
+	local name=$1
 	shift 1
 	find . $@ -name "$name" 2>/dev/null
-	unset name
 }
 
 function checkpath {

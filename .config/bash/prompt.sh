@@ -1,5 +1,5 @@
 function prompt_info {
-	last_status="$?"
+	local last_status="$?"
 	if [[ $last_status -ne 0 ]]
 	then
 		echo -e "\e[31m=>> $last_status <<=\e[0m"
@@ -10,7 +10,6 @@ function prompt_info {
     else
         PROMPT_VCS_INFO=""
     fi
-	unset last_status
 }
 
 PROMPT_COMMAND="prompt_info;${PROMPT_COMMAND#;}"

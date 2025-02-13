@@ -40,6 +40,7 @@ export MANROFFOPT=-P-i
 # nnn, the file manager
 function nnn {
 	command nnn
+	local choice
 	read -p 'cd? (Y/n)?: ' choice
 	if [ "$choice" != n ]
 	then
