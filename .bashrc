@@ -34,7 +34,7 @@ if [ -d ~/.config/bash ]; then
 fi
 unset rc
 
-shopt -s autocd
+shopt -s autocd cdspell
 shopt -s checkjobs # doesn't do anything when in a multiplexer
 # shopt -s failglob # globs that don't match anything throw an error
 unset command_not_found_handle
