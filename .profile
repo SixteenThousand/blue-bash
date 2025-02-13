@@ -5,8 +5,8 @@ then
 	export MANPAGER='nvim +Man!'
 fi
 export EDITOR
-
 export TERMINAL='kitty -1'
+export SIXTEEN_TFM=nnn
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
