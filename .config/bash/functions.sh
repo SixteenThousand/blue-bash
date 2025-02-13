@@ -25,7 +25,14 @@ function stale {
 			;;
 		?*)
 			# add command -DIGIT to bookmarks
-			fc -ln "-$1" "-$1" >> "$SIXTEEN_DATA_DIR/stale-bookmarks"
+			local stale_cmd=$(fc -ln "-$1" "-$1")
+			echo "About to add >>[1m$stale_cmd[0m<< to stale bookmarks."
+			local proceed
+			read -p "Proceed? (Y/n): " proceed
+			if [ "$proceed" != n ] && [ "$proceed" != N ]
+			then
+				echo "$stale_cmd" >> "$SIXTEEN_DATA_DIR/stale-bookmarks"
+			fi
 			return
 			;;
 		*)
@@ -44,7 +51,7 @@ function stale {
 	stale_cmd=${stale_cmd#*|}
 	local proceed
 	read -p "About to run >>[1m$stale_cmd[0m<<. Proceed (y/N)? " proceed
-	if [[ "$proceed" = 'y' ]]
+	if [ "$proceed" = y ] || [ "$proceed" = Y ]
 	then
 		eval $stale_cmd
 	else
