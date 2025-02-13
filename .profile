@@ -6,6 +6,7 @@ then
 fi
 export EDITOR
 export TERMINAL='kitty -1'
+export BROWSER=firefox
 export SIXTEEN_TFM=nnn
 
 export XDG_CONFIG_HOME="$HOME/.config"
