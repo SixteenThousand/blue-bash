@@ -20,6 +20,10 @@ function book {
 function stale {
 	# choose something
 	case $1 in
+		-e|--edit)
+			$EDITOR "$SIXTEEN_DATA_DIR/stale-bookmarks" "$SIXTEEN_DATA_DIR/.bash_history"
+			return
+			;;
 		-b|--bookmarks)
 			local stale_cmd=$(cat "$SIXTEEN_DATA_DIR/stale-bookmarks" | fzf)
 			;;
