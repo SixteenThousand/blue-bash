@@ -75,3 +75,69 @@ function checkpath {
 	find $(echo $PATH | sed -e 's/:/ /g') -maxdepth 1 -type f 2>/dev/null |
 		grep $@
 }
+
+# Choose a file!
+pick() {
+	local hidden='-not -path */.*'
+	local program=
+	local fzf=
+	for arg in $@
+	do
+		case $arg in
+			-h|--help)
+				cat <<- EOF
+				Pick a file!
+				Ignores hidden files/directories (files beginning with a .).
+				Echoes file name to stdout by default if no PROGRAM is specified
+				(see below).
+				
+				Usage:
+				    pick -h|--help
+				Show this message
+				    pick -f|--fzf  [-.|--hidden] [PROGRAM]
+				Fuzzy find a file (requires fzf). 
+				Opens file with PROGRAM. --hidden causes hidden files to be included in 
+				search list.
+				    pick [-.|--hidden] [PROGRAM]
+				Select a file from a numbered list. Options are same as with --fzf.
+				EOF
+				return 0
+				;;
+			-f|--fzf)
+				fzf=1
+				;;
+			-.|--hidden)
+				hidden=
+				;;
+			*)
+				program="$arg"
+				;;
+		esac
+	done
+	local old_ps3="$PS3"
+	PS3='[1;33mChoose a file> [0m'
+	local choice
+	if [ -n "$fzf" ]
+	then
+		choice="$(find -type f $hidden | fzf --prompt="$PS3")"
+	else
+		select file in $(find . -type f $hidden)
+		do
+			[ -z "$file" ] && return 1
+			choice="$file"
+			break
+		done
+	fi
+	if [ -z "$choice" ]
+	then
+		echo -e "\e[1;33mGuess we're not doing that then...\e[0m"
+		return 1
+	fi
+	if [ -n "$program" ]
+	then
+		$program "$choice"
+	else
+		echo "$choice"
+	fi
+	PS3="$old_ps3"
+}
