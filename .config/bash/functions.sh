@@ -20,6 +20,22 @@ function book {
 function stale {
 	# choose something
 	case $1 in
+		-h|--help)
+			cat <<- EOF
+			stale, a shell history management tool
+			
+			Usage:
+			    stale (no arguments)
+			Fuzzy find a command in bash's history to run again
+			    stale DIGIT
+			Add command -DIGIT to bookmarks
+			    stale -e|--edit
+			Edit list of bookmarked commands in \$EDITOR
+			    stale -b|--bookmarks
+			Run a bookmarked command
+			EOF
+			return
+			;;
 		-e|--edit)
 			$EDITOR "$SIXTEEN_DATA_DIR/stale-bookmarks" "$SIXTEEN_DATA_DIR/.bash_history"
 			return
