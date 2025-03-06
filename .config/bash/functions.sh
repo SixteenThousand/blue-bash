@@ -94,7 +94,7 @@ function checkpath {
 
 # Choose a file!
 pick() {
-	local hidden='-not -path */.*'
+	local findcmd="find -path '*node_modules*' -o -path '*.git*' -prune -o -type f -print"
 	local program=
 	local fzf=
 	for arg in $@
@@ -103,27 +103,22 @@ pick() {
 			-h|--help)
 				cat <<- EOF
 				Pick a file!
-				Ignores hidden files/directories (files beginning with a .).
+				Ignores anything within a .git or node_modules directory.
 				Echoes file name to stdout by default if no PROGRAM is specified
 				(see below).
 				
 				Usage:
 				    pick -h|--help
 				Show this message
-				    pick -f|--fzf  [-.|--hidden] [PROGRAM]
-				Fuzzy find a file (requires fzf). 
-				Opens file with PROGRAM. --hidden causes hidden files to be included in 
-				search list.
-				    pick [-.|--hidden] [PROGRAM]
-				Select a file from a numbered list. Options are same as with --fzf.
+				    pick -f|--fzf [PROGRAM]
+				Fuzzy find a file (requires fzf). Opens file with PROGRAM.
+				    pick [PROGRAM]
+				Use bash built-in select to pick a file to open (with PROGRAM).
 				EOF
 				return 0
 				;;
 			-f|--fzf)
 				fzf=1
-				;;
-			-.|--hidden)
-				hidden=
 				;;
 			*)
 				program="$arg"
@@ -135,9 +130,9 @@ pick() {
 	local choice
 	if [ -n "$fzf" ]
 	then
-		choice="$(find -type f $hidden | fzf --prompt="$PS3")"
+		choice="$(eval "$findcmd" | fzf --prompt="$PS3")"
 	else
-		select file in $(find . -type f $hidden)
+		select file in $(eval "$findcmd")
 		do
 			[ -z "$file" ] && return 1
 			choice="$file"
