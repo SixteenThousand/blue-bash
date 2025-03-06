@@ -42,5 +42,8 @@ export NNN_TMPFILE='/tmp/nnn-lastdir'
 export NNN_OPENER=xdg-open
 export NNN_PLUG='z:zoxide-cd;a:mount-a;b:mount-b;s:mount-nas;p:mpv-playlist'
 
+# I hate X11
+export XCURSOR_SIZE=48
+
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH:"
