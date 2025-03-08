@@ -1,5 +1,5 @@
 EDITOR=vim
-if which nvim 2>&1 >/dev/null
+if type nvim 2>&1 >/dev/null
 then
 	EDITOR=nvim
 	export MANPAGER='nvim +Man!'
