@@ -152,3 +152,12 @@ pick() {
 	fi
 	PS3="$old_ps3"
 }
+
+function lsproc {
+	for pid in $(pgrep $1)
+	do
+		echo $pid
+		cat /proc/${pid}/cmdline
+		echo ''
+	done
+}

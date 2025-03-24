@@ -37,7 +37,7 @@ export FNM_ARCH="x64"
 
 # nnn, the file manager
 export NNN_TRASH=1 # -> use trash-cli. Set to 2 for `gio trash`
-export NNN_OPTS=HQe
+export NNN_OPTS=HQeu
 export NNN_TMPFILE='/tmp/nnn-lastdir'
 export NNN_OPENER=xdg-open
 export NNN_PLUG='z:zoxide-cd;a:mount-a;b:mount-b;s:mount-nas;p:mpv-playlist'
