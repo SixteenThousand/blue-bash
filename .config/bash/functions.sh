@@ -168,6 +168,6 @@ function mpvv {
 	then
 		mpv --vid=no --loop-playlist=inf $1
 	else
-		mpv --id=no --loop-file=inf $1
+		mpv --vid=no --loop-file=inf $1
 	fi
 }
