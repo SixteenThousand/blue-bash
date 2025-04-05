@@ -87,8 +87,9 @@ function fq {
 	find . $@ -name "$name" 2>/dev/null
 }
 
-function checkpath {
-	find $(echo $PATH | sed -e 's/:/ /g') -maxdepth 1 -type f 2>/dev/null |
+function pathgrep {
+	find $(echo $PATH | sed -e 's/:/ /g') -maxdepth 1 -type f,l 2>/dev/null |
+		xargs stat --format=%N |
 		grep $@
 }
 
