@@ -93,7 +93,7 @@ function checkpath {
 }
 
 # Choose a file!
-pick() {
+function pick {
 	local findcmd="find -path '*node_modules*' -o -path '*.git*' -prune -o -type f -print"
 	local program=
 	local fzf=
@@ -160,4 +160,13 @@ function lsproc {
 		cat /proc/${pid}/cmdline
 		echo ''
 	done
+}
+
+function mpvv {
+	if [ "${1#*.}" = playlist ]
+	then
+		mpv --vid=no --loop-playlist=inf $1
+	else
+		mpv --id=no --loop-file=inf $1
+	fi
 }

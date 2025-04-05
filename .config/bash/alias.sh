@@ -2,6 +2,7 @@ alias ls="ls --color=always --group-directories-first --almost-all"
 alias lsn="ls --color=never"
 alias gitroot='cd $(git rev-parse --show-toplevel)'
 alias vv="$EDITOR"
+alias vvl="nvim --cmd 'let g:sixteen_lsp=v:true'"
 alias ff="clifm"
 alias py="python"
 alias code="codium"
@@ -14,4 +15,3 @@ alias yg='grep -RnH --exclude-dir=.git --exclude-dir=node_modules \
 	-I --color=always'
 alias xcopy='xclip -selection clipboard'
 alias te='tree -a -I .git -I node_modules'
-alias mpvv='mpv --vid=no'
